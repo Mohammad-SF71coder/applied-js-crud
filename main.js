@@ -41,25 +41,22 @@ if (localStorage.product){
 }
 
 create.onclick = function(){
-    if  (name.value.trim()!== "" 
-    && price.value.trim()!== "" 
-    && category.value.trim()!== "" 
-    && NewProduct.count < 101){
-        let NewProduct = {
-            Name:name.value.toLowerCase(),
-            Price:price.value,
-            Taxes:taxes.value,
-            Ads:ads.value,
-            Discount:discount.value,
-            Count:count.value,
-            Total:total.innerHTML,
-            Category:category.value.toLowerCase(),
+    let NewProduct = {
+        Name:name.value.toLowerCase(),
+        Price:price.value,
+        Taxes:taxes.value,
+        Ads:ads.value,
+        Discount:discount.value,
+        Count:count.value,
+        Total:total.innerHTML,
+        Category:category.value.toLowerCase(),
         }
-        
+
+    if (name.value != "" && price.value != "" && category.value != "" && count.value < 101){
         if (mood === "Create"){
             if (NewProduct.Count > 1 ){
-            for(let i =0; i < NewProduct.Count ;i++){
-                datapro.push(NewProduct);
+                for(let i =0; i < NewProduct.Count ;i++){
+                    datapro.push(NewProduct);
                 
                 
             }
@@ -72,18 +69,16 @@ create.onclick = function(){
             mood = "Create";
             create.innerHTML = "Create";
             count.style.display = "block";
-
-
         }
-        
-
         // save in localStorge:
-
         localStorage.setItem('product', JSON.stringify(datapro));
         cleardata();
         showData();
+
     }
+        
 }
+
 
 // clear input :
 
